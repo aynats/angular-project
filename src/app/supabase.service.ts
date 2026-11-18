@@ -12,5 +12,10 @@ export class SupabaseService {
     this.supabase = createClient(environment.supabaseUrl, environment.supabaseKey);
   }
 
-  async somethingMethod() { }
+  async signIn(email: string, password: string) {
+    return await this.supabase.auth.signInWithPassword({
+      email: email,
+      password: password,
+    });
+  }
 }
